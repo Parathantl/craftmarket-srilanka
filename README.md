@@ -1,4 +1,4 @@
-# CraftMarket - Sri Lankan Crafts E-Commerce Platform
+# CraftMarket - Sri Lankan Handcrafts E-Commerce Platform
 
 A full-stack e-commerce platform connecting talented Sri Lankan artisans with customers who value unique, handcrafted products. Creators can list and manage their handmade products, while customers can browse, purchase, and review items.
 
