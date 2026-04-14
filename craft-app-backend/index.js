@@ -28,14 +28,21 @@ app.use(helmet({
 }));
 
 // CORS configuration
-app.use(cors({
-  origin: [
-    process.env.FRONTEND_URL || 'http://localhost:3000',
-    'http://localhost:5174',
-    'http://127.0.0.1:5174',
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  ...( process.env.CORS_ORIGINS ? process.env.CORS_ORIGINS.split(',') : [] ),
+  // Local dev origins (only active when NODE_ENV is not production)
+  ...(process.env.NODE_ENV !== 'production' ? [
     'http://localhost:5173',
-    'http://127.0.0.1:5173' 
-  ],
+    'http://localhost:5174',
+    'http://127.0.0.1:5173',
+    'http://127.0.0.1:5174',
+    'http://localhost:3000'
+  ] : [])
+].filter(Boolean);
+
+app.use(cors({
+  origin: allowedOrigins,
   credentials: true
 }));
 
